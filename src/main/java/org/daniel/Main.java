@@ -1,20 +1,21 @@
 package org.daniel;
 
 import com.google.gson.Gson;
+import com.google.gson.stream.JsonReader;
 
+import java.io.FileNotFoundException;
+import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
 
 public class Main {
-    public static void main(String[] args) {
-        User user = new User(2, "Geraldine Geralds", "American");
-        Gson gson = new Gson();
-        String filePath = "./data/data.json";
+    public static void main(String[] args) throws IOException {
 
-        try (FileWriter fw = new FileWriter("test.json")) {
-            gson.toJson(user, fw);
-        } catch (IOException e) {
-            throw new RuntimeException(e);
-        }
+        Library l = new Library("./data/books.json", "./data/users.json");
+        l.runTerminal();
+
     }
 }
